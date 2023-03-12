@@ -19,3 +19,5 @@ To run benchmark using [wasmer](https://wasmer.io/), install that runtime and ex
 CARGO_TARGET_WASM32_WASI_RUNNER: "wasmer --dir=." cargo wasi bench
 ```
 
+# Utility script
+Execute [./run-bench.sh](run-bench.sh) to run the benchmark for all three runtimes (native, wasmtime, wasmer).
