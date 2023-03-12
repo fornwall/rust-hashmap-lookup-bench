@@ -1,0 +1,27 @@
+name: CI
+
+on: push
+
+jobs:
+  run-benchmark:
+    runs-on: ubuntu-latest
+    - uses: actions/checkout@v3
+    - uses: dtolnay/rust-toolchain@stable
+      with:
+        toolchain: stable
+    - name: Show rust version
+      run: rustc --version
+    - name: Setup homebrew
+      uses: Homebrew/actions/setup-homebrew@master
+    - name: Install wasmtime and wasmer
+      run: brew install wasmtime wasmer
+    - name: Run native benchmark
+      run: cargo bench
+    - name: Run wasmtime benchmark
+      run: cargo wasi bench
+      env:
+        CARGO_TARGET_WASM32_WASI_RUNNER: "wasmtime --dir=."
+    - name: Run wasmer benchmark
+      run: cargo wasi bench
+      env:
+        CARGO_TARGET_WASM32_WASI_RUNNER: "wasmer --dir=."
