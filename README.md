@@ -2,7 +2,7 @@
 A simple benchmark for lookups using `u32` keys in a hashmap.
 
 # Native run
-cargo bench
+Run using `cargo bench`.
 
 # WebAssembly run
 Install [cargo wasi](https://github.com/bytecodealliance/cargo-wasi): `cargo install cargo-wasi`.
