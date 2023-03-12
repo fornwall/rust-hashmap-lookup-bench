@@ -1,6 +1,10 @@
 #!/bin/sh
 
-# See https://github.com/bytecodealliance/cargo-wasi/issues/128 for why --dir=. is necessary:
-export CARGO_TARGET_WASM32_WASI_RUNNER="wasmtime --dir=."
+echo "# Native run"
+cargo bench
 
-cargo wasi bench
+echo "# Wasmtime run"
+CARGO_TARGET_WASM32_WASI_RUNNER="wasmtime --dir=." cargo wasi bench
+
+echo "# Wasmer run"
+CARGO_TARGET_WASM32_WASI_RUNNER="wasmer --dir=." cargo wasi bench
