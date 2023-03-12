@@ -1,5 +1,5 @@
 # rust-hashmap-lookup-bench
-A simple benchmark for lookups using `u32` keys in a hashmap.
+A [simple benchmark](benches/benchmark.rs) for lookups using `u32` keys in a hashmap.
 
 # Native run
 Run using `cargo bench`.
